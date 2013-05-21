@@ -72,6 +72,10 @@ func TailFile(filename string, config Config) (*Tail, error) {
 	return t, nil
 }
 
+func (tail *Tail) CurrentLocation() (int64, error) {
+	return tail.file.Seek(0, os.SEEK_CUR)
+}
+
 func (tail *Tail) Stop() error {
 	tail.Kill(nil)
 	return tail.Wait()
