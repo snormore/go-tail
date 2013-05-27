@@ -131,7 +131,7 @@ func (tail *Tail) tailFileSync() {
 	var whence int
 	var offset int64
 	if tail.Location > 0 {
-		whence = 2
+		whence = 0
 		offset = -1*int64(tail.Location) + 1
 	} else if tail.Location < 0 {
 		whence = 0
