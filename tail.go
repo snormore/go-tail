@@ -130,14 +130,12 @@ func (tail *Tail) tailFileSync() {
 	// never during subsequent re-opens.
 	var whence int
 	var offset int64
-	if tail.Location > 0 {
-		whence = 2
-		offset = -1*int64(tail.Location) + 1
-	} else if tail.Location < 0 {
+	if tail.Location >= 0 {
+		whence = 0
+		offset = int64(tail.Location)
+	} else {
 		whence = 0
 		offset = -1*int64(tail.Location) - 1
-	} else {
-		whence = 2
 	}
 	_, err := tail.file.Seek(offset, whence)
 	if err != nil {
