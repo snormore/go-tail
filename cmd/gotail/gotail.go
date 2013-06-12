@@ -14,6 +14,7 @@ func args2config() tail.Config {
 	flag.IntVar(&config.Location, "n", 0, "tail from the last (N-1)th byte offset location (use negative value to tail from start of file)")
 	flag.BoolVar(&config.Follow, "f", false, "wait for additional data to be appended to the file")
 	flag.BoolVar(&config.ReOpen, "F", false, "follow, and track file rename/rotation")
+	flag.BoolVar(&config.Poll, "p", false, "use polling, instead of inotify")
 	flag.Parse()
 	if config.ReOpen {
 		config.Follow = true

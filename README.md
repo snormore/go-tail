@@ -11,18 +11,17 @@ for line := range t.Lines {
 
 See [API documentation](http://godoc.org/github.com/ActiveState/tail).
 
+## Log rotation
+
+Tail comes with full support for truncation/move detection as it is
+designed to work with log rotation tools.
+
 ## Installing
 
-    go get github.com/ActiveState/tail
+    go get github.com/ActiveState/tail/...
 
-## Building
+## TODO
 
-To build and test the package,
+* Arbitrary values for `Location`
+* `Location` could be specified in both lines and bytes metrics.
 
-    make test
-
-To build the toy command-line program `gotail`,
-
-    cd cmd/gotail
-    make
-    ./gotail -h
